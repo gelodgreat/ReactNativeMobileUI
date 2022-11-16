@@ -9,3 +9,10 @@ Creating demo UI for React Native
 Installed libs
 1. styled-components
 2. axios
+
+Drill:
+1. Fetch API in this URL
+https://nekos.best/api/v2/waifu?amount=10
+https://nekos.best/api/v2/hug?amount=10
+2. Display Image and art
+3. Navigate in the source url
