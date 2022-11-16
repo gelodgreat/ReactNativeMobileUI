@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {FlatList, Image} from 'react-native';
+import {FlatList, Image, RefreshControl} from 'react-native';
 import {ArtistText, Container, WaifuContainer} from './Home.styles';
 import {HomeTypes, Result} from './Home.types';
 
@@ -11,6 +11,8 @@ const HomeView = (props: HomeTypes) => {
     waifus,
     getArtistData,
     navigateToOtherScreen,
+    getWaifu,
+    loading,
   } = props;
 
   const renderItem = ({item, index}: {item: Result; index: number}) => {
@@ -30,7 +32,13 @@ const HomeView = (props: HomeTypes) => {
 
   return (
     <Container>
-      <FlatList data={waifus || []} renderItem={renderItem} />
+      <FlatList
+        data={waifus || []}
+        renderItem={renderItem}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={getWaifu} />
+        }
+      />
     </Container>
   );
 };

@@ -10,12 +10,14 @@ import HomeView from './Home.view';
 const HomeContainer = (props: any) => {
   const [waifus, setWaifus] = useState<Result[] | []>([]);
   const [resultCount, setResultCount] = useState(10);
-
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
   const getWaifu = async () => {
+    setLoading(true);
     const data = await axios.get(`${API_URL}?amount=${resultCount}`);
     setWaifus(data.data.results || []);
+    setLoading(false);
   };
 
   const navigateToOtherScreen = (data: Result) => {
@@ -43,6 +45,8 @@ const HomeContainer = (props: any) => {
     setResultCount,
     getArtistData,
     navigateToOtherScreen,
+    loading,
+    getWaifu,
   };
 
   return <HomeView {...props} {...generatedValues} />;

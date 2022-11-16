@@ -17,4 +17,6 @@ export interface HomeTypes {
   setResultCount: Dispatch<SetStateAction<number>>;
   getArtistData: (url: string) => void;
   navigateToOtherScreen: (data: Result) => void;
+  loading: boolean;
+  getWaifu: () => void;
 }
